@@ -70,10 +70,32 @@ h1, h2 {
   background: #c8e6c9;
 }
 
+/* estilizando links de redes sociais */
 footer {
   background: linear-gradient(90deg, #00c6ff, #0072ff);
   color: white;
   text-align: center;
   padding: 1.5rem; /* mais espaço interno no rodapé */
   font-family: 'Montserrat', sans-serif;
+}
+footer a {
+  color: #ffcc00;
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.3s;
+}
+
+footer a:hover {
+  color: #ff4081; /* muda para rosa ao passar o mouse */
+}
+
+/* Estilizando o WhatsApp */
+footer a.whatsapp {
+  color: #25D366; /* verde do WhatsApp */
+  font-weight: bold;
+  text-decoration: none;
+}
+
+footer a.whatsapp:hover {
+  color: #128C7E; /* verde escuro ao passar o mouse */
 }
