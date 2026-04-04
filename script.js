@@ -1,4 +1,4 @@
-// Array de projetos - atualizado com ícones de tecnologia
+// Array de projetos
 const projetos = [
   {
     titulo: "Portfólio Profissional v2",
@@ -12,7 +12,7 @@ const projetos = [
     tecnologias: ["html5", "css3-alt", "js"],
     link: "https://paykuhan.github.io/Calculadora/"
   },
-  // Você pode adicionar mais projetos facilmente aqui:
+  // Posso adicionar mais projetos facilmente aqui:
   // {
   //   titulo: "Em breve",
   //   descricao: "Descrição do seu próximo grande projeto de Sistemas para Internet.",
