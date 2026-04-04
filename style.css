@@ -1,101 +1,300 @@
-/* Fonte moderna aplicada no corpo */
-body {
+/* --- RESET E ESTILOS GERAIS --- */
+* {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(270deg, #ff6f61, #ffcc00, #00c6ff, #0072ff);
-  background-size: 800% 800%;
-  animation: fundoAnimado 30s ease infinite; /* movimento mais lento */
-  padding: 20px; /* espaço interno geral da página */
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth; /* Rolagem suave entre seções */
 }
 
-@keyframes fundoAnimado {
+body {
+  font-family: 'Inter', sans-serif;
+  color: #e0e0e0; /* Cinza claro suave para leitura */
+  line-height: 1.6;
+  background-color: #111111; /* Preto escuro sofisticado */
+  background: radial-gradient(circle at center, #1a1a1a 0%, #111111 100%); /* Profundidade */
+  overflow-x: hidden;
+}
+
+/* Espaçamento uniforme do conteúdo */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+/* --- ANIMAÇÃO DE FUNDO SUTIL --- */
+@keyframes glowSutil {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(-45deg, #111, #222, #1a1a1a, #111);
+  background-size: 400% 400%;
+  animation: glowSutil 20s ease infinite;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+/* --- HEADER E NAVEGAÇÃO --- */
 header {
-  background: linear-gradient(90deg, #ff6f61, #ffcc00);
-  color: white;
-  padding: 1.5rem; /* mais espaço interno no cabeçalho */
-  font-family: 'Montserrat', sans-serif; /* títulos chamativos */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(17, 17, 17, 0.9); /* Fundo semi-transparente */
+  backdrop-filter: blur(10px); /* Efeito de desfoque moderno */
+  padding: 1rem 0;
+  z-index: 1000;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #38bdf8; /* Cor de destaque (ciano) */
+  letter-spacing: -1px;
 }
 
 nav ul {
   display: flex;
   list-style: none;
-  justify-content: center;
-  gap: 1rem;
-  padding: 0; /* remove espaço extra da lista */
+  gap: 1.5rem;
 }
 
 nav a {
-  color: #333;
+  color: #999;
   text-decoration: none;
-  transition: color 0.3s;
-  padding: 8px 12px; /* espaço interno nos links */
-  border-radius: 5px; /* cantos arredondados */
-  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 8px 0;
+  position: relative;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 0; height: 2px;
+  bottom: 0; left: 0;
+  background-color: #38bdf8;
+  transition: width 0.3s;
 }
 
 nav a:hover {
-  color: #ff4081;
-  background: rgba(255, 255, 255, 0.3); /* destaque suave ao passar o mouse */
+  color: #e0e0e0;
 }
 
+nav a:hover::after {
+  width: 100%;
+}
+
+/* --- SEÇÕES --- */
 section {
-  padding: 2rem; /* espaço interno nas seções */
+  padding: 120px 0;
 }
 
-h1, h2 {
-  font-family: 'Montserrat', sans-serif; /* títulos com fonte moderna */
+h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -2px;
+  line-height: 1.1;
+  margin-bottom: 10px;
 }
 
+h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+h2::after {
+  content: '';
+  display: block;
+  width: 60px; height: 3px;
+  background-color: #38bdf8;
+  margin: 15px auto 0;
+}
+
+/* Estilo para a legenda no Sobre Mim */
+.legenda {
+  font-size: 1.2rem;
+  color: #38bdf8;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+section p {
+  color: #999;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  max-width: 700px;
+}
+
+/* Botão principal moderno */
+.btn-primary {
+  display: inline-block;
+  padding: 12px 28px;
+  background-color: transparent;
+  color: #38bdf8;
+  border: 2px solid #38bdf8;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-top: 15px;
+}
+
+.btn-primary:hover {
+  background-color: #38bdf8;
+  color: #111;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+  transform: translateY(-3px);
+}
+
+/* --- GRADE DE PROJETOS --- */
 #lista-projetos {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem; /* mais espaço entre os cards */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
 }
 
 .projeto {
-  border: 2px solid #4caf50;
-  background: #e8f5e9;
-  transition: transform 0.3s, background 0.3s;
-  padding: 20px; /* espaço interno dentro dos cards */
-  border-radius: 10px; /* cantos arredondados */
-  font-family: 'Poppins', sans-serif;
+  background: rgba(26, 26, 26, 0.6); /* Efeito de vidro */
+  border: 1px solid #2a2a2a;
+  padding: 30px;
+  border-radius: 15px;
+  transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
 }
+
 .projeto:hover {
-  transform: scale(1.05);
-  background: #c8e6c9;
+  transform: translateY(-8px);
+  border-color: #38bdf8;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  background: rgba(30, 30, 30, 1);
 }
 
-/* estilizando links de redes sociais */
-footer {
-  background: linear-gradient(90deg, #00c6ff, #0072ff);
-  color: white;
-  text-align: center;
-  padding: 1.5rem; /* mais espaço interno no rodapé */
-  font-family: 'Montserrat', sans-serif;
+.projeto h3 {
+  font-size: 1.4rem;
+  color: #fff;
+  margin-bottom: 10px;
 }
-footer a {
-  color: #ffcc00;
+
+.projeto p {
+  font-size: 0.95rem;
+  color: #999;
+  margin-bottom: 20px;
+  flex-grow: 1; /* Faz o parágrafo ocupar o espaço */
+}
+
+.projeto a {
+  color: #38bdf8;
   text-decoration: none;
-  margin: 0 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
   transition: color 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
-footer a:hover {
-  color: #ff4081; /* muda para rosa ao passar o mouse */
+.projeto a::after {
+  content: '→';
 }
 
-/* Estilizando o WhatsApp */
-footer a.whatsapp {
-  color: #25D366; /* verde do WhatsApp */
-  font-weight: bold;
+.projeto a:hover {
+  color: #fff;
+}
+
+/* --- RODAPÉ --- */
+footer {
+  padding: 40px 0;
+  background-color: #0d0d0d;
+  border-top: 1px solid #2a2a2a;
+  text-align: center;
+}
+
+footer p {
+  color: #666;
+  font-size: 0.85rem;
+  margin-bottom: 15px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.social-links a {
+  color: #666;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  border: 1px solid transparent;
+}
+
+.social-links a:hover {
+  color: #38bdf8;
+  border-color: #38bdf8;
+  transform: translateY(-3px);
+}
+
+/* --- BOTÃO FLUTUANTE WHATSAPP --- */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #25D366; /* Verde original do WhatsApp */
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 50px;
   text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: all 0.3s ease;
 }
 
-footer a.whatsapp:hover {
-  color: #128C7E; /* verde escuro ao passar o mouse */
+.whatsapp-btn:hover {
+  background-color: #1ebe5d;
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.whatsapp-btn i {
+  font-size: 1.2rem;
+}
+
+/* --- RESPONSIVIDADE JÁ INCLUÍDA --- */
+@media (max-width: 768px) {
+  h1 { font-size: 2.5rem; }
+  section { padding: 80px 0; }
+  .header-container { padding: 0 20px; }
+  nav ul { gap: 1rem; }
+  .logo { font-size: 1.2rem; }
+  .whatsapp-btn { padding: 10px 15px; font-size: 0.8rem; bottom: 15px; right: 15px;}
 }
